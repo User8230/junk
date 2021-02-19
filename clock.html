@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+	<!-- https://www.codesdope.com/blog/article/how-to-create-a-digital-clock-using-javascript/
+	-->
+	
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+		body {
+		  background-color: #121212;
+		}
+
+		.c {
+		  font-family: 'Orbitron', sans-serif;
+		  color: #66ff99;
+		  font-size: 18px;
+		  text-align: center;
+		  padding-top: 40px;
+		  padding-bottom: 1px;
+		}
+	</style>
+
+</head>
+<body>
+    
+<div id="clock" class="c"></div>
+<div id="utc" class="c"></div>
+
+<script>
+
+function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+  //document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
+  //console.log(d2.toUTCString());
+  document.getElementById("clock").innerText = date.toString();
+  document.getElementById("utc").innerText = date.toUTCString();
+    var t = setTimeout(function(){ currentTime() }, 200); /* setting timer */
+}
+
+function updateTime(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime(); /* calling currentTime() function to initiate the process */
+
+</script>    
+    
+
+</body>
+</html>
